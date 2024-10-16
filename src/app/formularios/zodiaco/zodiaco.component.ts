@@ -6,11 +6,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-zodiaco',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ZodiacoComponent],
   templateUrl: './zodiaco.component.html',
   styleUrls: ['./zodiaco.component.css']
 })
-export class ZodiacoComponent implements OnInit {
+export default class ZodiacoComponent implements OnInit {
   formularioZodiaco!: FormGroup;
   resultado: any = {
     nombre: '',
