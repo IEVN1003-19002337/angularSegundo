@@ -1,0 +1,66 @@
+<form [formGroup]="formularioEmpleado">
+    <div class="grid grid-cols-5 gap-4 mb-2">
+        <div class="col-start-2">
+            <label for="matricula" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Matrícula</label>
+            <input type="text" formControlName="matricula" id="matricula" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+        <div class="col-start-3">
+            <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Nombre</label>
+            <input type="text" formControlName="nombre" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+        <div class="col-start-4">
+            <label for="correo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Correo</label>
+            <input type="email" formControlName="correo" id="correo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+        <div class="col-start-2">
+            <label for="edad" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Edad</label>
+            <input type="number" formControlName="edad" id="edad" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+        <div class="col-start-3">
+            <label for="horas_trabajadas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Horas Trabajadas</label>
+            <input type="number" formControlName="horasTrabajadas" id="horas_trabajadas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+    </div>
+
+    <div class="flex justify-center space-x-4 mt-4">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+            Registrar
+        </button>
+    </div>
+    
+    <div class="mt-8 overflow-x-auto">
+        <table *ngIf="empleados.length > 0" class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+            <thead>
+                <tr class="bg-gray-800 text-white text-sm leading-normal">
+                    <th class="py-3 px-6 text-left">Matrícula</th>
+                    <th class="py-3 px-6 text-left">Nombre</th>
+                    <th class="py-3 px-6 text-left">Correo</th>
+                    <th class="py-3 px-6 text-left">Edad</th>
+                    <th class="py-3 px-6 text-left">Horas Trabajadas</th>
+                    <th class="py-3 px-6 text-left">Pago</th>
+                    <th class="py-3 px-6 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700 text-sm">
+                <tr *ngFor="let empleado of empleados" class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">{{ empleado.matricula }}</td>
+                    <td class="py-3 px-6 text-left">{{ empleado.nombre }}</td>
+                    <td class="py-3 px-6 text-left">{{ empleado.correo }}</td>
+                    <td class="py-3 px-6 text-left">{{ empleado.edad }}</td>
+                    <td class="py-3 px-6 text-left">{{ empleado.horasTrabajadas }}</td>
+                    <td class="py-3 px-6 text-left">{{ empleado.pago }}</td>
+                    <td class="py-3 px-6 text-center space-x-2">
+                        <button (click)="modificarEmpleado(empleado.matricula)" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded">
+                            Modificar
+                        </button>
+                        <button (click)="eliminarEmpleado(empleado.matricula)" class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+    </div>
+    
+</form>

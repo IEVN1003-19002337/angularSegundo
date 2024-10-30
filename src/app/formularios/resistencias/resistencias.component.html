@@ -1,0 +1,107 @@
+<form [formGroup]="formularioRes" (ngSubmit)="registro()">
+    <div class="grid grid-cols-5 gap-4 mb-2">
+        <div class="col-start-2">
+            <label for="color1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Primera banda</label>
+            <select formControlName="color1" (change)="actualizarColorSeleccionado()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="negro">Negro</option>
+                <option value="marron">Marrón</option>
+                <option value="rojo">Rojo</option>
+                <option value="naranja">Naranja</option>
+                <option value="amarillo">Amarillo</option>
+                <option value="verde">Verde</option>
+                <option value="azul">Azul</option>
+                <option value="violeta">Violeta</option>
+                <option value="gris">Gris</option>
+                <option value="blanco">Blanco</option>
+            </select>
+        </div>
+        <div class="col-start-3">
+            <label for="color2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Segunda banda</label>
+            <select formControlName="color2" (change)="actualizarColorSeleccionado()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="negro">Negro</option>
+                <option value="marron">Marrón</option>
+                <option value="rojo">Rojo</option>
+                <option value="naranja">Naranja</option>
+                <option value="amarillo">Amarillo</option>
+                <option value="verde">Verde</option>
+                <option value="azul">Azul</option>
+                <option value="violeta">Violeta</option>
+                <option value="gris">Gris</option>
+                <option value="blanco">Blanco</option>
+            </select>
+        </div>
+        <div class="col-start-4">
+            <label for="color3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Tercera banda</label>
+            <select formControlName="color3" (change)="actualizarColorSeleccionado()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="negro">Negro</option>
+                <option value="marron">Marrón</option>
+                <option value="rojo">Rojo</option>
+                <option value="naranja">Naranja</option>
+                <option value="amarillo">Amarillo</option>
+                <option value="verde">Verde</option>
+                <option value="azul">Azul</option>
+                <option value="violeta">Violeta</option>
+                <option value="gris">Gris</option>
+                <option value="blanco">Blanco</option>
+            </select>
+        </div>
+        <div class="col-start-3 row-start-2">
+            <label for="tolerancia" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Tolerancia</label>
+            <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
+                <input type="radio" formControlName="tolerancia" value="oro" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                <label for="oro" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-black">Oro</label>
+            </div>
+            <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
+                <input type="radio" formControlName="tolerancia" value="plata" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
+                <label for="plata" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-black">Plata</label>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center space-x-4 mt-4">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+            Registrar
+        </button>
+    </div>
+</form>
+
+<div class="flex justify-center mt-4">
+    <table class="table-auto border-collapse border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border border-gray-300 px-4 py-2">Color 1</th>
+          <th class="border border-gray-300 px-4 py-2">Color 2</th>
+          <th class="border border-gray-300 px-4 py-2">Color 3</th>
+          <th class="border border-gray-300 px-4 py-2">Tolerancia</th>
+          <th class="border border-gray-300 px-4 py-2">Valor</th>
+          <th class="border border-gray-300 px-4 py-2">Valor Mínimo</th>
+          <th class="border border-gray-300 px-4 py-2">Valor Máximo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="colorSeleccionado.color1 || colorSeleccionado.color2 || colorSeleccionado.color3">
+          <td class="border border-gray-300 px-4 py-2" [ngStyle]="{'background-color': colorHex[colorSeleccionado.color1]}">{{ colorSeleccionado.color1 }}</td>
+          <td class="border border-gray-300 px-4 py-2" [ngStyle]="{'background-color': colorHex[colorSeleccionado.color2]}">{{ colorSeleccionado.color2 }}</td>
+          <td class="border border-gray-300 px-4 py-2" [ngStyle]="{'background-color': colorHex[colorSeleccionado.color3]}">{{ colorSeleccionado.color3 }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ colorSeleccionado.tolerancia }}</td>
+          <td class="border border-gray-300 px-4 py-2" *ngIf="resultadosGuardados.length > 0">{{ resultadosGuardados[resultadosGuardados.length - 1].valor }} Ω</td>
+          <td class="border border-gray-300 px-4 py-2" *ngIf="resultadosGuardados.length > 0">{{ resultadosGuardados[resultadosGuardados.length - 1].valorMinimo }} Ω</td>
+          <td class="border border-gray-300 px-4 py-2" *ngIf="resultadosGuardados.length > 0">{{ resultadosGuardados[resultadosGuardados.length - 1].valorMaximo }} Ω</td>
+        </tr>
+        <tr *ngFor="let res of resultadosGuardados">
+          <td class="border border-gray-300 px-4 py-2" [ngStyle]="{'background-color': colorHex[res.color1]}">{{ res.color1 }}</td>
+          <td class="border border-gray-300 px-4 py-2" [ngStyle]="{'background-color': colorHex[res.color2]}">{{ res.color2 }}</td>
+          <td class="border border-gray-300 px-4 py-2" [ngStyle]="{'background-color': colorHex[res.color3]}">{{ res.color3 }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ res.tolerancia }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ res.valor }} Ω</td>
+          <td class="border border-gray-300 px-4 py-2">{{ res.valorMinimo }} Ω</td>
+          <td class="border border-gray-300 px-4 py-2">{{ res.valorMaximo }} Ω</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+<div class="flex justify-center space-x-4 mt-4">
+    <button (click)="imprimir()" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+        Imprimir
+    </button>
+</div>
