@@ -1,4 +1,6 @@
-<form [formGroup]="formularioEmpleado">
+<form [formGroup]="formGroup">
+    <h1 class="text-red-500 font-bold text-4xl text-center">Registrar empleado</h1>
+    <td></td>
     <div class="grid grid-cols-5 gap-4 mb-2">
         <div class="col-start-2">
             <label for="matricula" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Matrícula</label>
@@ -23,22 +25,26 @@
     </div>
 
     <div class="flex justify-center space-x-4 mt-4">
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+        <button type="button" (click)="registrarEmpleado()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
             Registrar
         </button>
     </div>
+</form>
     
-    <div class="mt-8 overflow-x-auto">
-        <table *ngIf="empleados.length > 0" class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+<div>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <h1 class="text-blue-500 font-bold text-3xl">Lista de empleados</h1>
+        <td></td>
+        <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
             <thead>
                 <tr class="bg-gray-800 text-white text-sm leading-normal">
-                    <th class="py-3 px-6 text-left">Matrícula</th>
-                    <th class="py-3 px-6 text-left">Nombre</th>
-                    <th class="py-3 px-6 text-left">Correo</th>
-                    <th class="py-3 px-6 text-left">Edad</th>
-                    <th class="py-3 px-6 text-left">Horas Trabajadas</th>
-                    <th class="py-3 px-6 text-left">Pago</th>
-                    <th class="py-3 px-6 text-center">Acciones</th>
+                    <th scope="col" class="py-3 px-6 text-left">Matrícula</th>
+                    <th scope="col" class="py-3 px-6 text-left">Nombre</th>
+                    <th scope="col" class="py-3 px-6 text-left">Correo</th>
+                    <th scope="col" class="py-3 px-6 text-left">Edad</th>
+                    <th scope="col" class="py-3 px-6 text-left">Horas Trabajadas</th>
+                    <th scope="col" class="py-3 px-6 text-left">Subtotal</th>
+                    <th scope="col" class="py-3 px-6 text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700 text-sm">
@@ -48,7 +54,7 @@
                     <td class="py-3 px-6 text-left">{{ empleado.correo }}</td>
                     <td class="py-3 px-6 text-left">{{ empleado.edad }}</td>
                     <td class="py-3 px-6 text-left">{{ empleado.horasTrabajadas }}</td>
-                    <td class="py-3 px-6 text-left">{{ empleado.pago }}</td>
+                    <td class="py-3 px-6 text-left">{{ empleado.subTotal }}</td>
                     <td class="py-3 px-6 text-center space-x-2">
                         <button (click)="modificarEmpleado(empleado.matricula)" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded">
                             Modificar
@@ -60,7 +66,11 @@
                 </tr>
             </tbody>
         </table>
-    
     </div>
+</div>    
+
+<div class="mt-4">
+    <h2 class="text-xl font-bold">Total a Pagar: <span class="text-green-500">{{ totalAPagar }}</span></h2>
+  </div>
+     
     
-</form>
